@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SIGED - Sistema de Gestión Departamental
 
-## Getting Started
+Aplicación web desarrollada como Proyecto Intermodular del ciclo **DAM (Desarrollo de Aplicaciones Multiplataforma)** en Centro San Valero.
 
-First, run the development server:
+SIGED permite gestionar el presupuesto e inversiones de los departamentos de un centro educativo, con control de órdenes de compra, facturas, proveedores e inventario.
+
+---
+
+## Tecnologías
+
+- **Next.js 14** (App Router)
+- **MySQL** + consultas directas con `mysql2`
+- **NextAuth.js** con proveedor Google OAuth
+- **Tailwind CSS**
+- **Lucide React** (iconografía)
+
+---
+
+## Roles
+
+| Rol | Acceso |
+|-----|--------|
+| Administrador | Acceso completo a todos los módulos y gestión de usuarios |
+| Contable | Acceso a facturas, órdenes, proveedores e informes de todos los departamentos |
+| Jefe de Departamento | Acceso restringido al resumen y órdenes de su propio departamento |
+
+---
+
+## Módulos
+
+- **Resumen por departamento** — presupuesto, inversiones y gasto real
+- **Órdenes de compra e inversión**
+- **Facturas** — generación de PDF y gestión de estados
+- **Proveedores** — alta, edición y vinculación por departamento
+- **Inventario**
+- **Presupuestos e inversiones**
+- **Informes**
+- **Gestión de usuarios** (solo Administrador)
+
+---
+
+## Instalación
+
+### Requisitos
+- Node.js 18+
+- MySQL 8+
+
+### Pasos
 
 ```bash
+# 1. Clonar el repositorio
+git clone https://github.com/cristinasevi/proyecto-intermodular-siged.git
+cd proyecto-intermodular-siged
+
+# 2. Instalar dependencias
+npm install
+
+# 3. Configurar variables de entorno
+# Crear .env con:
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=tu_contraseña
+MYSQL_DATABASE=Proyecto_Intermodular_SIGED
+
+# Crear .env.local con:
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=tu_secret
+GOOGLE_CLIENT_ID=tu_client_id
+GOOGLE_CLIENT_SECRET=tu_client_secret
+
+# 4. Importar la base de datos
+Abrir MySQL Workbench → File → Open SQL Script → ejecutar Proyecto_Intermodular_SIGED.sql
+
+# 5. Arrancar el servidor
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
